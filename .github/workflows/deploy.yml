@@ -26,4 +26,6 @@ jobs:
           CI: true
       - name: Deploy the new website
         run: ./bin/deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

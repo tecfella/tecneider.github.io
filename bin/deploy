@@ -2,6 +2,8 @@
 
 set -e
 
+echo $$GITHUB_ACTOR
+
 # go to master branch
 git checkout master
 
