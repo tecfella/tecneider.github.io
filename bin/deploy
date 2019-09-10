@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # go to master branch
 git checkout master
 
