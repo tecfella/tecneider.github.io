@@ -1,6 +1,10 @@
 name: Node CI
 
-on: [push]
+on:
+  push:
+    branches:
+    - develop
+    - task/*
 
 jobs:
   build:
@@ -25,8 +29,3 @@ jobs:
       env:
         CI: true
 
-on:
-  push:
-    branches:
-    - develop
-    - task/*
