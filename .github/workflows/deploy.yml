@@ -24,8 +24,11 @@ jobs:
           yarn build
         env:
           CI: true
-      - name: Deploy the new website
-        run: ./bin/deploy
+      - name: Setup deployment
+        run: ./bin/setup_deploy
+      - name: Commit changes
+        uses: elstudio/actions-js-build/commit@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUSH_BRANCH: 'staging'
 

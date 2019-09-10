@@ -2,8 +2,6 @@
 
 set -e
 
-echo $$GITHUB_ACTOR
-
 # go to master branch
 git checkout master
 
@@ -15,13 +13,3 @@ ls -lrta
 
 # put the contents of build into this directory
 mv build/* .
-
-# push the new content to master
-git status
-git add .
-git status
-echo commit
-git commit -m "New release"
-git status
-echo push
-git push
