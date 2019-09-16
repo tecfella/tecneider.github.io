@@ -11,3 +11,4 @@ find . -type 'f' -maxdepth 1 | xargs rm -f
 
 # put the contents of build into this directory
 mv build/* .
+mv build/. .
