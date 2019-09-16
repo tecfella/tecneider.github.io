@@ -72,7 +72,10 @@ module.exports = {
       template: `${publicDir}/index.html`
     }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new CopyWebpackPlugin([`${publicDir}/**/*`], { context: publicDir }),
+    new CopyWebpackPlugin(
+      [{ from: `${publicDir}/**/*` }, { from: `${publicDir}/.nojekyll` }],
+      { context: publicDir, dot: true }
+    ),
     new CssExtractPlugin({ filename: "[name].[contenthash].css" })
   ],
   stats: ifProd("normal", "minimal")
