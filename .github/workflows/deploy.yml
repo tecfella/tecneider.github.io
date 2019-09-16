@@ -1,0 +1,33 @@
+name: Deploy CI
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js '10.x'
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: yarn install, build, and test
+        run: |
+          yarn install --frozen-lockfile
+          yarn test
+          yarn build
+        env:
+          CI: true
+      - name: Setup deployment
+        run: ./bin/setup_deploy
+      - name: Commit changes
+        uses: elstudio/actions-js-build/commit@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUSH_BRANCH: 'master'
+

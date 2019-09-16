@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+# go to master branch
+git checkout master
+
+# remove everything except the .git and build folders
+find . -type 'd' -maxdepth 1 | grep -v ".git" | grep -v '^.$' | grep -v 'build' | xargs rm -rf
+find . -type 'f' -maxdepth 1 | xargs rm -f
+
+# put the contents of build into this directory
+mv build/* .
